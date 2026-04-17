@@ -37,7 +37,7 @@ nonUniqueNeutralRoles = ["Amnesiac", "Doomsayer", "Jester", "Juggernaut", "Fairy
 
 # crewmate
 uniqueCrewmateRoles = ["Jailor", "Politician", "Prosecutor", "Swapper", "TimeLord", "Monarch"]
-nonUniqueCrewmateRoles = ["Altruist", "Aurial", "Cleric", "Deputy", "Engineer", "Forensic", "Haunter", "Hunter", "Imitator", "Investigator", "Lookout", "Medic", "Medium", "Mirrorcaster", "Mystic", "Oracle", "Plumber", "Seer", "Sentry", "Sheriff", "Snitch", "Sonar", "Spy", "Transporter", "Trapper", "Veteran", "Vigilante", "Warden"]
+nonUniqueCrewmateRoles = ["Altruist", "Aurial", "Cleric", "Deputy", "Engineer", "Forensic", "Haunter", "Hunter", "Imitator", "Investigator", "Lookout", "Medic", "Medium", "Mirrorcaster", "Mystic", "Oracle", "Plumber", "Seer", "Sentry", "Sherif", "Snitch", "Sonar", "Spy", "Transporter", "Trapper", "Veteran", "Vigilante", "Warden"]
 
 # imp
 uniqueImpRoles = ["Ambassador",  "Puppeteer", "Spellslinger", "Traitor"]
@@ -3728,12 +3728,23 @@ def removeRandomSettings():
     maxImps.grid_forget()
     maxNeutsText.grid_forget()
     maxNeuts.grid_forget()
+    minRoleChanceText.grid_forget()
+    minRoleChance.grid_forget()
+    maxRoleChanceText.grid_forget()
+    maxRoleChance.grid_forget()
+
+
 
 def bringBackRandomSettings():
-    maxImpsText.grid()
-    maxImps.grid()
-    maxNeutsText.grid()
-    maxNeuts.grid()
+    maxImpsText.grid(row=7, column=0, sticky="w", padx=10)
+    maxImps.grid(row=7, column=0, sticky="e", padx=10)
+    maxNeutsText.grid(row=8, column=0, sticky="w", padx=10)
+    maxNeuts.grid(row=8, column=0, sticky="e", padx=10)
+    minRoleChanceText.grid(row=9, column=0, sticky="w", padx=10)
+    minRoleChance.grid(row=9, column=0, sticky="e", padx=10)
+    maxRoleChanceText.grid(row=10, column=0, sticky="w", padx=10)
+    maxRoleChance.grid(row=10, column=0, sticky="e", padx=10)
+
 
 
 def removeRandomizedPresetText():
@@ -3767,7 +3778,7 @@ randomButton.grid(row=0, column=0, sticky="w", padx=200 )
 # refresh files button
 refreshButton = tk.Button(window, text="Refresh", command=refresh)
 refreshButton.config(bg="#000000", fg="#FFFFFF")
-refreshButton.grid(row=1, column=0)
+
 
 
 # file path button
@@ -3809,32 +3820,39 @@ randomPresetNameText.grid(row=6, column=0)
 
 
 # maximum imps manager
-maxImpsText = tk.Label(window, text="How many impostors will be the maximum?")
+maxImpsText = tk.Label(window, text="Max amount of imps:")
 maxImpsText.config(bg="#000000", fg="#FFFFFF")
-maxImpsText.grid(row=7, column=0)
+
 
 maxImps = tk.Scale(window, from_=1, to=15, orient="horizontal")
 maxImps.config(bg="#000000", fg="#FFFFFF")
-maxImps.grid(row=8, column=0)
+
 
 
 # min role chance manager
-minRoleChanceText = tk.Label(window, text="Minimum amount of chance a role can have")
+minRoleChanceText = tk.Label(window, text="Minimum amount of chance a role can have:")
 minRoleChanceText.config(bg="#000000", fg="#FFFFFF")
-minRoleChanceText.grid(row=9, column=0)
 
-minRoleChance = tk.Scale(window, from_=1, to=15, orient="horizontal")
+minRoleChance = tk.Scale(window, from_=0, to=100, orient="horizontal")
 minRoleChance.config(bg="#000000", fg="#FFFFFF")
-minRoleChance.grid(row=10, column=0)
+
+
+# max role chance manager
+maxRoleChanceText = tk.Label(window, text="Maximum amount of chance a role can have:")
+maxRoleChanceText.config(bg="#000000", fg="#FFFFFF")
+
+maxRoleChance = tk.Scale(window, from_=0, to=100, orient="horizontal")
+maxRoleChance.config(bg="#000000", fg="#FFFFFF")
+
 
 # maximum neuts manager
-maxNeutsText = tk.Label(window, text="How many neutrals will be the maximum?")
+maxNeutsText = tk.Label(window, text="Max amount of neutrals:")
 maxNeutsText.config(bg="#000000", fg="#FFFFFF")
-maxNeutsText.grid(row=11, column=0)
+
 
 maxNeuts = tk.Scale(window, from_=1, to=15, orient="horizontal")
 maxNeuts.config(bg="#000000", fg="#FFFFFF")
-maxNeuts.grid(row=12, column=0)
+
 
 
 
