@@ -947,15 +947,18 @@ def trueRandomize():
     LoversChance = {random.randint(0,100)}
     """)
 
+
+        minBait = random.uniform(0,5)
+        maxBait = random.uniform(minBait,5)
         file.write(f"""[TownOfUs.Options.Modifiers.Crewmate.BaitOptions]
 
     # Setting type: Single
     # Default value: 0
-    MinDelay = {random.uniform(0,5)}
+    MinDelay = {minBait}
 
     # Setting type: Single
     # Default value: 1
-    MaxDelay = {random.uniform(0,5)}
+    MaxDelay = {maxBait}
     """)
 
 
@@ -1192,15 +1195,17 @@ def trueRandomize():
 
 
 
+        ventsMin = random.randint(0,10)
+        ventsMax = random.randint(ventsMin,10)
         file.write(f"""[TownOfUs.Options.Modifiers.Impostor.CircumventOptions]
 
     # Setting type: Single
     # Default value: 3
-    VentsMin = {random.randint(0,10)}
+    VentsMin = {ventsMin}
 
     # Setting type: Single
     # Default value: 10
-    VentsMax = {random.randint(0,10)}
+    VentsMax = {ventsMax}
     """)
 
 
