@@ -1,3 +1,5 @@
+# TODO: Make the min and max chance in the spawn chances more optimal maybe?
+
 import os
 import math, random
 import tkinter as tk
@@ -47,22 +49,25 @@ nonUniqueImpRoles = ["Ambusher", "Eclipsal", "Escapist", "Grenadier", "Morphling
 
 # non unique roles
 def NonUniqueRandomRoleSpawn(allignment, role, file):
-  #  minimumChance = 
+    minimumChance = minRoleChance.get()
+    maximumChance = maxRoleChance.get()
     file.write(f"""# Setting type: Int32
 # Default value: 0
 Num TownOfUs.Roles.{allignment}.{role}Role = {random.randint(0,15)} \n
 # Setting type: Int32
 # Default value: 0
-Chance TownOfUs.Roles.{allignment}.{role}Role = {random.randint(1,100)} \n \n""")
+Chance TownOfUs.Roles.{allignment}.{role}Role = {random.randint(minimumChance,maximumChance)} \n \n""")
 
 # unique roles
 def UniqueRandomRoleSpawn(allignment, role, file):
+    minimumChance = minRoleChance.get()
+    maximumChance = maxRoleChance.get()
     file.write(f"""# Setting type: Int32
 # Default value: 0
 Num TownOfUs.Roles.{allignment}.{role}Role = {random.randint(0,1)} \n
 # Setting type: Int32
 # Default value: 0
-Chance TownOfUs.Roles.{allignment}.{role}Role = {random.randint(1,100)} \n \n""")
+Chance TownOfUs.Roles.{allignment}.{role}Role = {random.randint(minimumChance,maximumChance)} \n \n""")
 
 
 # randomize command
@@ -3843,6 +3848,7 @@ maxRoleChanceText.config(bg="#000000", fg="#FFFFFF")
 
 maxRoleChance = tk.Scale(window, from_=0, to=100, orient="horizontal")
 maxRoleChance.config(bg="#000000", fg="#FFFFFF")
+maxRoleChance.set(100)
 
 
 # maximum neuts manager
