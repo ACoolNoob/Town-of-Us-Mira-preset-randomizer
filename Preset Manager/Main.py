@@ -37,7 +37,7 @@ nonUniqueNeutralRoles = ["Amnesiac", "Doomsayer", "Jester", "Juggernaut", "Fairy
 
 # crewmate
 uniqueCrewmateRoles = ["Jailor", "Politician", "Prosecutor", "Swapper", "TimeLord", "Monarch"]
-nonUniqueCrewmateRoles = ["Altruist", "Aurial", "Cleric", "Deputy", "Engineer", "Forensic", "Haunter", "Hunter", "Imitator", "Investigator", "Lookout", "Medic", "Medium", "Mirrorcaster", "Mystic", "Oracle", "Plumber", "Seer", "Sentry", "Sherrif", "Snitch", "Sonar", "Spy", "Transporter", "Trapper", "Veteran", "Vigilante", "Warden"]
+nonUniqueCrewmateRoles = ["Altruist", "Aurial", "Cleric", "Deputy", "Engineer", "Forensic", "Haunter", "Hunter", "Imitator", "Investigator", "Lookout", "Medic", "Medium", "Mirrorcaster", "Mystic", "Oracle", "Plumber", "Seer", "Sentry", "Sherif", "Snitch", "Sonar", "Spy", "Transporter", "Trapper", "Veteran", "Vigilante", "Warden"]
 
 # imp
 uniqueImpRoles = ["Ambassador",  "Puppeteer", "Spellslinger", "Traitor"]
