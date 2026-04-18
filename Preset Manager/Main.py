@@ -72,7 +72,12 @@ Chance TownOfUs.Roles.{allignment}.{role}Role = {random.randint(minimumChance,ma
 
 # randomize command
 def trueRandomize():
-    global directory, availableSlots
+    global directory, availableSlots, uniqueRolesBool
+
+    if uniqueRolesBool == True:
+        print("Yes")
+    else:
+        print("No")
 
     # no location to store the settings
     if directory == None:
@@ -93,8 +98,16 @@ def trueRandomize():
 
 
     # role spawn chances for non unique neuts
-        for role in nonUniqueNeutralRoles:
-            NonUniqueRandomRoleSpawn("Neutral", role, file)
+
+        if uniqueRolesBool:
+            for role in nonUniqueNeutralRoles:
+
+                UniqueRandomRoleSpawn("Neutral", role, file)
+
+        else:
+            for role in nonUniqueNeutralRoles:
+
+                NonUniqueRandomRoleSpawn("Neutral", role, file)
 
     # role spawns for unique neuts
         for role in uniqueNeutralRoles:
@@ -104,17 +117,29 @@ def trueRandomize():
         for role in uniqueCrewmateRoles:
             UniqueRandomRoleSpawn("Crewmate", role, file)
 
-    # non unique crew
-        for role in nonUniqueCrewmateRoles:
-            NonUniqueRandomRoleSpawn("Crewmate", role, file)
+   # non unique crew
+        if uniqueRolesBool:
+            for role in nonUniqueCrewmateRoles:
+                UniqueRandomRoleSpawn("Crewmate", role, file)
+
+        else:
+            for role in nonUniqueCrewmateRoles:
+                NonUniqueRandomRoleSpawn("Crewmate", role, file)
+
 
     # unique imp
         for role in uniqueImpRoles:
             UniqueRandomRoleSpawn("Impostor", role, file)
 
+
     # non unique
-        for role in nonUniqueImpRoles:
-            NonUniqueRandomRoleSpawn("Impostor", role, file)
+        if uniqueRolesBool:
+            for role in nonUniqueImpRoles:
+                UniqueRandomRoleSpawn("Impostor", role, file)
+            
+        else:
+            for role in nonUniqueImpRoles:
+                NonUniqueRandomRoleSpawn("Impostor", role, file)
 
     # make sure for assasin stuff
         file.write("[TownOfUs.Options.AssassinOptions] \n \n ")
@@ -3731,24 +3756,37 @@ def getRandomModeName():
 def removeRandomSettings():
     maxImpsText.grid_forget()
     maxImps.grid_forget()
+
     maxNeutsText.grid_forget()
     maxNeuts.grid_forget()
+
     minRoleChanceText.grid_forget()
     minRoleChance.grid_forget()
+
     maxRoleChanceText.grid_forget()
     maxRoleChance.grid_forget()
+
+    uniqueRolesSwitchText.grid_forget()
+    uniqueRolesSwitch.grid_forget()
 
 
 
 def bringBackRandomSettings():
     maxImpsText.grid(row=7, column=0, sticky="w", padx=10)
     maxImps.grid(row=7, column=0, sticky="e", padx=10)
+
     maxNeutsText.grid(row=8, column=0, sticky="w", padx=10)
     maxNeuts.grid(row=8, column=0, sticky="e", padx=10)
+
     minRoleChanceText.grid(row=9, column=0, sticky="w", padx=10)
     minRoleChance.grid(row=9, column=0, sticky="e", padx=10)
+
     maxRoleChanceText.grid(row=10, column=0, sticky="w", padx=10)
     maxRoleChance.grid(row=10, column=0, sticky="e", padx=10)
+
+    uniqueRolesSwitchText.grid(row=11, column=0, sticky="w", padx=10)
+    uniqueRolesSwitch.grid(row=11, column=0, sticky="e", padx=40)
+
 
 
 
@@ -3759,6 +3797,15 @@ def bringBackRandomizedPresetText():
     randomPresetNameText.grid()
 
 
+# this cuz i couldnt figure out why the switch no no work
+uniqueRolesBool = False
+def ChangeUniqueRolesBool():
+    global uniqueRolesBool
+    if uniqueRolesBool:
+        uniqueRolesBool = False
+
+    else:
+        uniqueRolesBool = True
 
 # create the window
 window = tk.Tk()
@@ -3860,6 +3907,18 @@ maxNeuts = tk.Scale(window, from_=1, to=15, orient="horizontal")
 maxNeuts.config(bg="#000000", fg="#FFFFFF")
 
 
+
+# Bool for unique roles or not
+
+
+uniqueRolesSwitchText = tk.Label(window, text="Allow more than 1 of a role:")
+uniqueRolesSwitchText.config(bg="#000000", fg="#FFFFFF")
+
+
+
+
+uniqueRolesSwitch = tk.Checkbutton(window, selectcolor="#FFFFFF", command=ChangeUniqueRolesBool)
+uniqueRolesSwitch.config(bg="#000000", fg="#000000")
 
 
 # remove all variable based text
